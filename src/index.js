@@ -1,18 +1,22 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { createStore, combineReducers } from 'redux'
 import Counter from './components/Counter'
 import counter from './reducers'
 import {connect, Provider} from "react-redux";
+import {  DynamicModuleLoader, createStore } from "redux-dynamic-modules";
 
-
-const rootReducer = combineReducers({counter})
-const store = createStore(rootReducer)
 const rootEl = document.getElementById('root')
+const counterModule = {
+  id: "counter",
+  reducerMap: {
+    counter
+  }
+}
+const store = createStore({}, [] , [], []);
 
 const render = () => ReactDOM.render(
   <Provider store={store}>
-    <ConnectedCounter />
+    <DynamicCounter />
   </Provider>,
   rootEl
 )
@@ -32,5 +36,9 @@ const mapDispatchToProps = (dispatch) => {
 }
 
 const ConnectedCounter = connect(mapStateToProps, mapDispatchToProps)(Counter);
-
+const DynamicCounter = () => (
+  <DynamicModuleLoader modules={[counterModule]}>
+    <ConnectedCounter />
+  </DynamicModuleLoader>
+)
 render()

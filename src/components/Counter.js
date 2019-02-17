@@ -22,7 +22,7 @@ class Counter extends Component {
     const { value, onIncrement, onDecrement } = this.props;
     if (value === undefined) {
       debugger;
-      console.log("Why is this undefined?");
+      console.log("Why is this undefined 2?");
     }
     return (
       <p>
