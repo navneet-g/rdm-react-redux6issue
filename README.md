@@ -1,3 +1,4 @@
+Repro for https://github.com/reduxjs/react-redux/issues/1194
 - Created using create react app
 - To see the repro do following
   - yarn install
