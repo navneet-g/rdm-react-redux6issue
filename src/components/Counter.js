@@ -20,10 +20,7 @@ class Counter extends Component {
 
   render() {
     const { value, onIncrement, onDecrement } = this.props;
-    if (value === undefined) {
-      debugger;
-      console.log("Why is this undefined 2?");
-    }
+
     return (
       <p>
         Clicked: {value} times <button onClick={onIncrement}>+</button>{" "}
